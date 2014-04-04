@@ -81,6 +81,7 @@ else {
 //  Serial.println("resting...");
 //  myMotor->release();
 //  delay(2000);
+
 //And then just loop the whole thing, displaying the serial output on an LCD for the user.
 
  
