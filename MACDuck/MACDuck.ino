@@ -1,7 +1,8 @@
 #include <AccelStepper.h>
 #include <Wire.h>
 #include <Adafruit_MotorShield.h>
-//#include "utility/Adafruit_PWMServoDriver.h"
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x3f,20,4);  // set the LCD address to 0x3F, with 16 chars and 4 lines
 
 Adafruit_MotorShield AFMS = Adafruit_MotorShield();              // default i2c address - change for additional stacked shields
 
@@ -52,6 +53,8 @@ void setup() {
     pinMode(j, INPUT);
 }
   Serial.begin(9600);
+  lcd.init();                      // initialize the lcd 
+  lcd.backlight();
   AFMS.begin();
   
   dimmer1.setMaxSpeed(500);
@@ -69,7 +72,7 @@ void setup() {
   digitalWrite(slp, LOW);
  
 
-  Serial.println("MacDuck started.");
+  lcd.print("MacDuck started.");
 
   if (modInit == false) {
     initModule();
@@ -84,7 +87,9 @@ sleep
 */
 
 void initModule() {
-  Serial.println("Calibrating module...");
+  delay(1500);
+  lcd.clear();
+  lcd.print("Calibrating module...");
   
   dimmer1.moveTo(-dimmerSteps);
   dimmer2.moveTo(-dimmerSteps);
