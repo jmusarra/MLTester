@@ -25,8 +25,8 @@ void backwardstep2() {
 
 const int flagSteps = 330;           // 1340 quarter steps, 335 full steps
 const int dimmerSteps = 158;         // 18 full steps, 144 eighth-steps 
-const byte colorWheelSteps = 177;    // 178 or 177? Feels like there's some inaccuracy.
-byte slp = 12;
+const byte colorWheelSteps = 177;    // 178 or 177? Feels like there's some inaccuracy.  Why is this a byte? Could be an uint8_t?
+byte slp = 12;                       // This, and all pin numbers, could be uint8_t if needed. Will never be negative, never > 255
 int cyanSwitch = 14;
 int yelSwitch = 15;
 int magSwitch = 16;
